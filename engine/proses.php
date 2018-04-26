@@ -1,12 +1,13 @@
 <?php
-
 include 'mobil.php';
 include 'merk.php';
 include 'user.php';
+include 'ConnDB.php';
 
 if(isset($_POST['subInMerk']))
 {
-  echo "INPUT MERK";
+  addMerk($_POST['namamerk']);
+  echo "DATA SUKSES DITAMBAHKAN";
 }
 else if(isset($_POST['subInAdm']))
 {
@@ -59,6 +60,22 @@ else if(isset($_GET['subDeMob']))
 {
 
 
+}
+
+function checkAuth()
+{
+
+}
+
+function checkStatus($xRes)
+{
+  if(!$xRes)
+  {
+    echo ("Terjadi Kesalahan Koneksi. Err : " .$mysqli_error($mysqli));
+  }
+  else {
+    echo "OK";
+  }
 }
 
  ?>

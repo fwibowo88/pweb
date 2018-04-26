@@ -1,14 +1,18 @@
 <?php
 
-$srvName = "localhost"; //SERVER ADDRESS OR IP SERVER
-$srvUser = "root"; // USER ID TO DATABASE
-$srvPWD = "mysql"; //PWD TO ACCESS DATABASE
-$dbName = "dota_f"; //DATABASE NAME
+$srvName = "my.fwibowo.com"; //SERVER ADDRESS OR IP SERVER
+$srvUser = "developer"; // USER ID TO DATABASE
+$srvPWD = "rahasia"; //PWD TO ACCESS DATABASE
+$dbName = "dbotoweb"; //DATABASE NAME
 
-try {
-  $mysqli = mysqli_connect($srvName,$srvUser,$srvPWD,$dbName);
-} catch (Exception $err) {
-  echo "KESALAHAN" .$err;
-}
+$mysqli = mysqli_connect($srvName,$srvUser,$srvPWD,$dbName);
+
+/*
+  if (mysqli_connect_errno())
+  {
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  }
+*/
+
 
  ?>

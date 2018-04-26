@@ -2,14 +2,14 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>INPUT MERK</title>
+    <title>Edit Merk</title>
   </head>
   <body>
-    <h1>INPUT MERK BARU</h1>
+    <h1>EDIT DATA MERK</h1>
     <hr>
-    <form action="../engine/proses.php" method="POST">
+    <form class="" action="../engine/proses.php" method="POST">
       <input type="text" name="brand" value="">
-      <input type="submit" name="subInMerk" value="Simpan">
+      <input type="submit" name="subEdMerk" value="SIMPAN">
     </form>
   </body>
 </html>

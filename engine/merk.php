@@ -1,27 +1,23 @@
 <?php
 include 'ConnDB.php';
 
-function addMerk($xMerk)
-{
-  $result = mysqli_query($mysqli,"INSERT INTO tblMerk VALUES(null,'$xMerk')");
-  $msgLog = "1";
 
-  //retun $msgLog;
-}
-function editMerk($xID,$xMerk)
-{
-  $result = mysqli_query($mysqli,"UPDATE tblMerk SET namaMerk='$xMerk' WHERE idMerk='$xID'");
-  $msgLog = "1";
+  function addMerk($xMerk)
+  {
+    global $mysqli;
+    $result = mysqli_query($mysqli,"INSERT INTO tblMerk VALUES(null,'$xMerk')");
 
-  //retun $msgLog;
-}
-function deleteMerk($xID)
-{
-  $result = mysqli_query($mysqli,"DELETER FROM tblMerk WHERE idMerk='$xID'");
-  $msgLog = "1";
+  }
+  function editMerk($xID,$xMerk)
+  {
+    global $mysqli;
+    $result = mysqli_query($mysqli,"UPDATE tblMerk SET namaMerk='$xMerk' WHERE idMerk='$xID'");
+  }
+  function deleteMerk($xID)
+  {
+    global $mysqli;
+    $result = mysqli_query($mysqli,"DELETE FROM tblMerk WHERE idMerk='$xID'");
+  }
 
-  //retun $msgLog;
-
-}
 
  ?>
