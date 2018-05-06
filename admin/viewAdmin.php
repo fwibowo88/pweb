@@ -11,12 +11,13 @@
       <tr>
         <th>USERNAME</th>
         <th>NAMA ADMIN</th>
+        <th>PWD</th>
+        <th>SALT</th>
       </tr>
-      <tr>
-        <td>11</td>
-        <td>12</td>
-        <td>13</td>
-      </tr>
+      <?php
+      include '../engine/user.php';
+      viewUser();
+      ?>
     </table>
 <a href="inputAdmin.php">TAMBAH ADMIN</a>
   </body>

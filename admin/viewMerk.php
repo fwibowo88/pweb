@@ -12,6 +12,10 @@
         <th>ID MERK</th>
         <th>MERK</th>
       </tr>
+      <?php
+      include '../engine/merk.php';
+      viewMerk();
+       ?>
     </table>
     <a href="#">Tambah Merk</a>
   </body>

@@ -7,7 +7,7 @@
   <body>
     <h1>INPUT NEW CAR</h1>
     <hr>
-<form action="../engine/proses.php" method="post">
+<form action="../engine/proses.php" method="POST">
   Brand : <input type="text" name="brand" value=""> <br>
   Tipe : <input type="text" name="type" value=""> <br>
   Panjang : <input type="number" name="length" value=""> mm <br>

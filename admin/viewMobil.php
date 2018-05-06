@@ -24,6 +24,10 @@
         <th>VELG</th>
         <th>RODA</th>
       </tr>
+      <?php
+      include '../engine/mobil.php';
+      viewMobil();
+       ?>
     </table>
     <a href="#">TAMBAH MOBIL</a>
   </body>
