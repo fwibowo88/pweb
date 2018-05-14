@@ -30,5 +30,16 @@ include 'ConnDB.php';
       echo "<td><a href='edit.php?id=#'>Edit</a>";
     }
   }
+  function makeOption()
+  {
+      global $mysqli;
+
+      $result = mysqli_query($mysqli,"SELECT * FROM tblMerk");
+
+      while($data = mysqli_fetch_array($result))
+      {
+        echo "<option value='".$data['idMerk']."'>" .$data['namaMerk'] ."</option>";
+      }
+  }
 
  ?>

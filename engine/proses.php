@@ -2,7 +2,7 @@
 include 'mobil.php';
 include 'merk.php';
 include 'user.php';
-include 'ConnDB.php';
+//include 'ConnDB.php';
 
 if(isset($_POST['subInMerk']))
 {
@@ -36,7 +36,7 @@ else if(isset($_POST['subInMob']))
   echo $tmpRoda = $_POST['wheelSize'];
   addMobil($tmpIDMerk,$tmpTipe,$tmpPanjang,$tmpLebar,$tmpTinggi,$tmpJarak,
   $tmpRadius,$tmpHMin,$tmpHMax,$tmpKapMesin,$tmpKapTangki,$tmpVelg,$tmpRoda);
-  
+
 }
 /*
 else if(isset($_POST['subViMerk']))
@@ -50,7 +50,8 @@ else if(isset($_POST['subViAdm']))
 else if(isset($_POST['subViMob']))
 {
 
-}
+}*/
+
 else if(isset($_GET['subEdMerk']))
 {
   $tmpID = $_GET['idMerk'];
@@ -60,34 +61,36 @@ else if(isset($_GET['subEdMerk']))
 
 }
 else if(isset($_GET['subEdAdm']))
-{
-  $tmpID = ;
-  $tmpName = ;
-  $tmpPwd = ;
-  $tmpSalt = ;
+{/*
+  $tmpID =$_GET[];
+  $tmpName = $_GET[];
+  $tmpPwd = $_GET[];
+  $tmpSalt = $_GET[];
 
   editUser();
+  */
 }
 else if(isset($_GET['subEdMob']))
 {
-  $tmpID = ;
-  $tmpIDMerk = ;
-  $tmpTipe = ;
-  $tmpPanjang =;
-  $tmpLebar = ;
-  $tmpTinggi = ;
-  $tmpJarak = ;
-  $tmpRadius = ;
-  $tmpHMin = ;
-  $tmpHMax = ;
-  $tmpKapMesin = ;
-  $tmpKapTangki = ;
-  $tmpVelg = ;
-  $tmpRoda = ;
+  /*
+  $tmpID = $_GET[];
+  $tmpIDMerk = $_GET[];
+  $tmpTipe = $_GET[];
+  $tmpPanjang =$_GET[];
+  $tmpLebar = $_GET[];
+  $tmpTinggi = $_GET[];
+  $tmpJarak = $_GET[];
+  $tmpRadius = $_GET[];
+  $tmpHMin = $_GET[];
+  $tmpHMax = $_GET[];
+  $tmpKapMesin = $_GET[];
+  $tmpKapTangki = $_GET[];
+  $tmpVelg = $_GET[];
+  $tmpRoda = $_GET[];
 
   editMobil($tmpID,$tmpIDMerk,$tmpTipe,$tmpPanjang,$tmpLebar,$tmpTinggi,$tmpJarak,
   $tmpRadius,$tmpHMin,$tmpHMax,$tmpKapMesin,$tmpKapTangki,$tmpVelg,$tmpRoda);
-
+*/
 }
 else if(isset($_GET['subDeMerk']))
 {
@@ -116,5 +119,4 @@ function checkStatus($xRes)
     echo "OK";
   }
 }
-*/
  ?>
