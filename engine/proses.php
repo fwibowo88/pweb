@@ -2,21 +2,32 @@
 include 'mobil.php';
 include 'merk.php';
 include 'user.php';
-//include 'ConnDB.php';
 
 if(isset($_POST['subInMerk']))
 {
+
   addMerk($_POST['brand']);
   echo "DATA SUKSES DITAMBAHKAN";
 }
 else if(isset($_POST['subInAdm']))
 {
+  //GET VALUE
   $tmpUname = $_POST['uname'];
   $tmpName = $_POST['name'];
   $tmpPwd = $_POST['pwd'] ;
-  $tmpSalt = 'xx';
+  $tmpRPwd = $_POST['rePwd'] ;
 
-  addUser($tmpUname,$tmpName,$tmpPwd,$tmpSalt);
+  if($tmpPwd != $tmpRPwd)
+  {
+    echo "<a href='../admin/inputAdmin.php'>BACK TO INPUT ADMIN</a>";
+  }
+  //ENCRYPTING PWD
+  $enc = encryptUser($tmpPwd);
+  $split = explode("-",$enc);
+  $encrPwd = $split[0];
+  $tmpSalt = $split[1];
+
+  addUser($tmpUname,$tmpName,$encrPwd,$tmpSalt);
 }
 
 else if(isset($_POST['subInMob']))
@@ -34,64 +45,50 @@ else if(isset($_POST['subInMob']))
   echo $tmpKapTangki = $_POST['tankCap'];
   echo $tmpVelg = $_POST['rimSize'];
   echo $tmpRoda = $_POST['wheelSize'];
+
   addMobil($tmpIDMerk,$tmpTipe,$tmpPanjang,$tmpLebar,$tmpTinggi,$tmpJarak,
   $tmpRadius,$tmpHMin,$tmpHMax,$tmpKapMesin,$tmpKapTangki,$tmpVelg,$tmpRoda);
 
 }
-/*
-else if(isset($_POST['subViMerk']))
+else if(isset($_POST['subEdMerk']))
 {
-
-}
-else if(isset($_POST['subViAdm']))
-{
-
-}
-else if(isset($_POST['subViMob']))
-{
-
-}*/
-
-else if(isset($_GET['subEdMerk']))
-{
-  $tmpID = $_GET['idMerk'];
-  $tmpBrand = $_GET['brand'];
+  $tmpID = $_POST['id'];
+  $tmpBrand = $_POST['brand'];
 
   editMerk($tmpID,$tmpBrand);
 
 }
-else if(isset($_GET['subEdAdm']))
-{/*
-  $tmpID =$_GET[];
-  $tmpName = $_GET[];
-  $tmpPwd = $_GET[];
-  $tmpSalt = $_GET[];
+/*
+else if(isset($_POST['subEdAdm']))
+{
+  $tmpID = $_POST['uname'];
+  $tmpName = $_POST['pwd'];
+  $tmpPwd = $_POST['rePwd'];
+  $tmpSalt = xx;
 
-  editUser();
-  */
-}
+  editUser($xID,$xNama,$xPwd,$xSalt);
+}*/
 else if(isset($_GET['subEdMob']))
 {
-  /*
-  $tmpID = $_GET[];
-  $tmpIDMerk = $_GET[];
-  $tmpTipe = $_GET[];
-  $tmpPanjang =$_GET[];
-  $tmpLebar = $_GET[];
-  $tmpTinggi = $_GET[];
-  $tmpJarak = $_GET[];
-  $tmpRadius = $_GET[];
-  $tmpHMin = $_GET[];
-  $tmpHMax = $_GET[];
-  $tmpKapMesin = $_GET[];
-  $tmpKapTangki = $_GET[];
-  $tmpVelg = $_GET[];
-  $tmpRoda = $_GET[];
+  $tmpID = $_GET['id'];
+  $tmpIDMerk = $_GET['brand'];
+  $tmpTipe = $_GET['type'];
+  $tmpPanjang =$_GET['length'];
+  $tmpLebar = $_GET['weight'];
+  $tmpTinggi = $_GET['height'];
+  $tmpJarak = $_GET['jarakRoda'];
+  $tmpRadius = $_GET['radius'];
+  $tmpHMin = $_GET['pMin'];
+  $tmpHMax = $_GET['pMax'];
+  $tmpKapMesin = $_GET['machineCap'];
+  $tmpKapTangki = $_GET['tankCap'];
+  $tmpVelg = $_GET['rimSize'];
+  $tmpRoda = $_GET['wheelSize'];
 
   editMobil($tmpID,$tmpIDMerk,$tmpTipe,$tmpPanjang,$tmpLebar,$tmpTinggi,$tmpJarak,
   $tmpRadius,$tmpHMin,$tmpHMax,$tmpKapMesin,$tmpKapTangki,$tmpVelg,$tmpRoda);
-*/
 }
+
 else if(isset($_GET['subDeMerk']))
 {
   $tmpID = $_GET['idMerk'];
@@ -106,17 +103,5 @@ else if(isset($_GET['subDeMob']))
 {
   $tmpID = $_GET['idMerk'];
   deleteMobil($tmpID);
-}
-
-
-function checkStatus($xRes)
-{
-  if(!$xRes)
-  {
-    echo ("Terjadi Kesalahan Koneksi. Err : " .$mysqli_error($mysqli));
-  }
-  else {
-    echo "OK";
-  }
 }
  ?>

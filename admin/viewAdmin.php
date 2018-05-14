@@ -15,7 +15,7 @@
         <th>SALT</th>
       </tr>
       <?php
-      include '../engine/user.php';
+      include '../engine/proses.php';
       viewUser();
       ?>
     </table>

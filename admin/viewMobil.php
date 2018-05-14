@@ -23,12 +23,13 @@
         <th>TANGKI</th>
         <th>VELG</th>
         <th>RODA</th>
+        <th>FOTO</th>
       </tr>
       <?php
       include '../engine/mobil.php';
       viewMobil();
        ?>
     </table>
-    <a href="#">TAMBAH MOBIL</a>
+    <a href="inputMobil.php">TAMBAH MOBIL</a>
   </body>
 </html>

@@ -7,14 +7,14 @@
   <body>
     <h1>INPUT NEW CAR</h1>
     <hr>
-<form action="../engine/proses.php" method="POST">
+<form action="../engine/proses.php" method="POST" enctype="multipart/form-data">
   Brand : <select name="brand">
     <?php
     include '../engine/merk.php';
     makeOption();
     ?>
   </select> <br>
-  Tipe : <input type="text" name="type" value=""> <br>
+  Tipe : <input type="text" name="type" value=""enc> <br>
   Panjang : <input type="number" name="length" value=""> mm <br>
   Lebar : <input type="number" name="weight" value=""> mm <br>
   Tinggi : <input type="number" name="height" value=""> mm<br>

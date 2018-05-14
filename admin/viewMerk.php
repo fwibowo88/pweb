@@ -13,10 +13,10 @@
         <th>MERK</th>
       </tr>
       <?php
-      include '../engine/merk.php';
+      include '../engine/proses.php';
       viewMerk();
        ?>
     </table>
-    <a href="#">Tambah Merk</a>
+    <a href="inputMerk.php">Tambah Merk</a>
   </body>
 </html>
