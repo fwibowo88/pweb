@@ -1,7 +1,7 @@
 <?php
-include '/engine/auth.php';
+include '../engine/auth.php';
 
-session_start();
+//session_start();
 sesCheck();
 
 
