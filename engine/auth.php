@@ -3,23 +3,27 @@ include 'ConnDB.php';
 
 session_start();
 
-$uname = $_POST['uname'];
-$pwd = $_POST['pwd'];
+//$uname = $_POST['uname'];
+//$pwd = $_POST['pwd'];
 
-function authCheck()
+function authCheck($uname, $pwd)
 {
-  $res = mysqli_query($mysqli,"SELECT * FROM tbladmin WHERE userID='$uname' AND passwordAdmin='$pwd'");
-
+  $mysqli = new mysqli("localhost","root","","dbotoweb");
+  $res = mysqli_query($mysqli,"SELECT * FROM admin WHERE nama='".$uname."' AND password='".$pwd."'");
   $count = mysqli_num_rows($res);
 
   if($count > 0)
   {
     $_SESSION['usr'] = $uname;
     $_SESSION['stat'] = "on";
-    header("location:admin/index.php");
+    header("location:viewMobil.php");
+    //print_r($_SESSION);
+    //echo "berhasil";
   }
   else {
-    header("location:index.php?msg=fail");
+    //header("location:index.php?msg=fail");
+    echo "gagal";
+    echo $count;
   }
 
 }
@@ -27,7 +31,8 @@ function sesCheck()
 {
   if($_SESSION['stat']!="on")
   {
-    header("location:index.php?msg=unknown");
+    header("location:login.php");
+    echo "Please login first";
   }
 
 }
