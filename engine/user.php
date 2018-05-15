@@ -33,8 +33,17 @@ function viewUser()
     echo "<td>".$data['namaAdmin']."</td>";
     echo "<td>".$data['passwordAdmin']."</td>";
     echo "<td>".$data['saltAdmin']."</td>";
-    echo "<td><a href='edit.php?id=#'>Edit</a>";
+    echo "<td><a href='editAdmin.php?id=" .$data['userID'] ."'>Edit</a>";
   }
 }
 
+function encryptUser($xPwd)
+{
+  $tmpPwd = md5($xPwd);
+  $salt = strlen($xPwd);
+  $encPwd = $tmpPwd .$salt;
+  $encFin = md5($encPwd);
+
+  return $encFin ."-" .$salt;
+}
  ?>

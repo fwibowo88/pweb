@@ -5,18 +5,19 @@ include 'ConnDB.php';
   {
     global $mysqli;
     $result = mysqli_query($mysqli,"INSERT INTO tblMerk VALUES(null,'$xMerk')");
-
   }
+
   function editMerk($xID,$xMerk)
   {
     global $mysqli;
-    $result = mysqli_query($mysqli,"UPDATE tblMerk SET namaMerk='$xMerk' WHERE idMerk='$xID'");
+    $result = mysqli_query($mysqli,"UPDATE tblMerk SET namaMerk='$xMerk' WHERE idMerk=$xID");
   }
   function deleteMerk($xID)
   {
     global $mysqli;
     $result = mysqli_query($mysqli,"DELETE FROM tblMerk WHERE idMerk='$xID'");
   }
+
   function viewMerk()
   {
     global $mysqli;
@@ -27,9 +28,22 @@ include 'ConnDB.php';
       echo "<tr>";
       echo "<td>".$data['idMerk']."</td>";
       echo "<td>".$data['namaMerk']."</td>";
-      echo "<td><a href='edit.php?id=#'>Edit</a>";
+      echo "<td><a href='editmerk.php?id=".$data['idMerk']."'>Edit</a>";
     }
   }
+
+  function findMerk($xID)
+  {
+    global $mysqli;
+
+    $result = mysqli_query($mysqli,"SELECT namaMerk FROM tblMerk WHERE idMerk=$xID");
+
+    while($data = mysqli_fetch_array($result)){
+      echo "<td>".$data['namaMerk']."</td>";
+    }
+
+  }
+
   function makeOption()
   {
       global $mysqli;
@@ -41,5 +55,4 @@ include 'ConnDB.php';
         echo "<option value='".$data['idMerk']."'>" .$data['namaMerk'] ."</option>";
       }
   }
-
  ?>

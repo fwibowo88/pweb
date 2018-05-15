@@ -7,8 +7,10 @@
   <body>
     <h1>EDIT DATA MERK</h1>
     <hr>
-    <form class="" action="../engine/proses.php" method="POST">
-      <input type="text" name="brand" value="">
+    <form action="../engine/proses.php" method="POST">
+      <input type="hidden" name="id" value="<?php echo $_GET['id']?>">
+      ID MERK :<input type="text" name="txtID" value="<?php echo $_GET['id']?>" size="5" disabled><br>
+      MERK : <input type="text" name="brand" value=""><br>
       <input type="submit" name="subEdMerk" value="SIMPAN">
     </form>
   </body>

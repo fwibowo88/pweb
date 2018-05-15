@@ -6,13 +6,13 @@
   </head>
   <body>
     <h1>WELCOME USER,</h1>
-    <div class="User">
+    <div id="User">
       <a href="viewAdmin.php">USER ADMINISTRATION</a>
     </div>
-    <div class="Car">
+    <div id="Car">
       <a href="viewMobil.php">CAR ADMINISTRATION</a>
     </div>
-    <div class="Brand">
+    <div id="Brand">
       <a href="viewMerk.php">BRAND ADMINISTRATION</a>
     </div>
     <a href="#">LOGOUT</a>
