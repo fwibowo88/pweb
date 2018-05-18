@@ -23,12 +23,12 @@ include 'ConnDB.php';
     global $mysqli;
 
     $result = mysqli_query($mysqli,"SELECT * FROM tblMerk");
-
     while($data = mysqli_fetch_array($result)){
       echo "<tr>";
       echo "<td>".$data['idMerk']."</td>";
       echo "<td>".$data['namaMerk']."</td>";
       echo "<td><a href='editmerk.php?id=".$data['idMerk']."'>Edit</a>";
+      echo "</tr>";
     }
   }
 
@@ -37,11 +37,9 @@ include 'ConnDB.php';
     global $mysqli;
 
     $result = mysqli_query($mysqli,"SELECT namaMerk FROM tblMerk WHERE idMerk=$xID");
-
     while($data = mysqli_fetch_array($result)){
       echo "<td>".$data['namaMerk']."</td>";
     }
-
   }
 
   function makeOption()

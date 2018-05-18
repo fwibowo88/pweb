@@ -68,22 +68,22 @@ else if(isset($_POST['subEdAdm']))
 
   editUser($xID,$xNama,$xPwd,$xSalt);
 }*/
-else if(isset($_GET['subEdMob']))
+else if(isset($_POST['subEdMob']))
 {
-  $tmpID = $_GET['id'];
-  $tmpIDMerk = $_GET['brand'];
-  $tmpTipe = $_GET['type'];
-  $tmpPanjang =$_GET['length'];
-  $tmpLebar = $_GET['weight'];
-  $tmpTinggi = $_GET['height'];
-  $tmpJarak = $_GET['jarakRoda'];
-  $tmpRadius = $_GET['radius'];
-  $tmpHMin = $_GET['pMin'];
-  $tmpHMax = $_GET['pMax'];
-  $tmpKapMesin = $_GET['machineCap'];
-  $tmpKapTangki = $_GET['tankCap'];
-  $tmpVelg = $_GET['rimSize'];
-  $tmpRoda = $_GET['wheelSize'];
+  $tmpID = $_POST['id'];
+  $tmpIDMerk = $_POST['brand'];
+  $tmpTipe = $_POST['type'];
+  $tmpPanjang =$_POST['length'];
+  $tmpLebar = $_POST['weight'];
+  $tmpTinggi = $_POST['height'];
+  $tmpJarak = $_POST['jarakRoda'];
+  $tmpRadius = $_POST['radius'];
+  $tmpHMin = $_POST['pMin'];
+  $tmpHMax = $_POST['pMax'];
+  $tmpKapMesin = $_POST['machineCap'];
+  $tmpKapTangki = $_POST['tankCap'];
+  $tmpVelg = $_POST['rimSize'];
+  $tmpRoda = $_POST['wheelSize'];
 
   editMobil($tmpID,$tmpIDMerk,$tmpTipe,$tmpPanjang,$tmpLebar,$tmpTinggi,$tmpJarak,
   $tmpRadius,$tmpHMin,$tmpHMax,$tmpKapMesin,$tmpKapTangki,$tmpVelg,$tmpRoda);
@@ -101,7 +101,8 @@ else if(isset($_GET['subDeAdm']))
 }
 else if(isset($_GET['subDeMob']))
 {
-  $tmpID = $_GET['idMerk'];
+  $tmpID = $_GET['idMobil'];
   deleteMobil($tmpID);
+  echo "DATA TELAH TERHAPUS";
 }
  ?>
