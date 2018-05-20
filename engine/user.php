@@ -31,8 +31,6 @@ function viewUser()
     echo "<tr>";
     echo "<td>".$data['userID']."</td>";
     echo "<td>".$data['namaAdmin']."</td>";
-    echo "<td>".$data['passwordAdmin']."</td>";
-    echo "<td>".$data['saltAdmin']."</td>";
     echo "<td><a href='editAdmin.php?id=" .$data['userID'] ."'>Edit</a>";
   }
 }

@@ -1,62 +1,54 @@
 <?php
 include 'ConnDB.php';
+include 'user.php';
 
 session_start();
 
-//$uname = $_POST['uname'];
-//$pwd = $_POST['pwd'];
-
 function authCheck($uname, $pwd)
 {
-  $mysqli = new mysqli("localhost","root","","dbotoweb");
-  $res = mysqli_query($mysqli,"SELECT * FROM admin WHERE nama='".$uname."' AND password='".$pwd."'");
+  global $mysqli;
+  $res = mysqli_query($mysqli,"SELECT * FROM tbladmin WHERE userID='".$uname."' AND passwordAdmin='".$pwd."'");
   $count = mysqli_num_rows($res);
 
   if($count > 0)
   {
     $_SESSION['usr'] = $uname;
     $_SESSION['stat'] = "on";
-    header("location:viewMobil.php");
-    //print_r($_SESSION);
-    //echo "berhasil";
+    print_r($_SESSION);
+    header("location:../admin/menuAdmin.php");
   }
   else {
     //header("location:index.php?msg=fail");
-    echo "gagal";
-    echo $count;
-  }
+    echo "Username atau Password Salah.<br>";
+    echo "<a href='login.php'>Back To Login</a>";
 
+  }
 }
+
 function sesCheck()
 {
-  if($_SESSION['stat']!="on")
+  if($_SESSION['stat'] !="on")
   {
-    header("location:login.php");
-    echo "Please login first";
-  }
-
-}
-function errLog()
-{
-  $msg = $_GET['msg'];
-  if($msg === "fail")
-  {
-    echo "USERNAME or PASSWORD SALAH.";
-
-  }
-  else if($msg === "unknown")
-  {
-    echo "UNAUTHORIZED ACCESS PLEASE LOGIN";
-  }
-  else if($msg === "usrOff")
-  {
-    echo "YOU ARE LOGGED OFF";
+    header("Location:login.php");
   }
 }
+
 function logOut()
 {
   session_destroy();
-  header("location:index.php?msg=usrOFF");
 }
 
+//Handling Login Form
+if(isset($_POST['btnLogin']))
+{
+  $tmpID = $_POST["uname"];
+  $tmpPWD = $_POST["pwd"];
+
+  $xPWD = encryptUser($tmpPWD);
+
+  $split = explode("-",$xPWD);
+  $encrPwd = $split[0];
+
+  authCheck($tmpID,$encrPwd);
+}
 ?>

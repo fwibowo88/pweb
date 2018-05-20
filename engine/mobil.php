@@ -30,62 +30,49 @@
     handlingFile($xID,"del");
   }
 
-  function findMobil($xID)
+  function viewMobil($xMerk)
   {
     global $mysqli;
-    $result = mysqli_query($mysqli,"SELECT * FROM tblMobil WHERE idMobil='$xID'");
+    //PAGINATION
+    $limit = 5;
+    $page = isset($_GET['page'])? (int)$_GET["page"]:1;
+    $awal = ($page>1) ? ($page * $limit) - $limit : 0;
 
+      $result = mysqli_query($mysqli,"SELECT * FROM tblmobil c, tblmerk m WHERE c.idMerk = m.idMerk AND m.namaMerk LIKE '%".$xMerk."%'LIMIT $awal,$limit");
+      $total = mysqli_query($mysqli,"SELECT COUNT(*)AS hasil FROM tblmobil c, tblmerk m WHERE c.idMerk = m.idMerk AND m.namaMerk LIKE '%".$xMerk."%'");
+
+
+    $xData = mysqli_fetch_array($total);
+    $jum = $xData['hasil'];
+    $pages = ceil($jum/$limit);
+
+    for($x=1;$x<=$pages;$x++)
+    {
+      echo "<a href='?page=$x'>$x<a>";
+    }
+    //QUERY RESULT
     while($data = mysqli_fetch_array($result)){
       echo "<tr>";
       echo "<td>".$data['idMobil']."</td>";
       echo findMerk($data['idMerk']);
       echo "<td>".$data['tipe']."</td>";
-      echo "<td>".$data['panjang']."</td>";
-      echo "<td>".$data['lebar']."</td>";
-      echo "<td>".$data['tinggi']."</td>";
-      echo "<td>".$data['jarakSumbuRoda']."</td>";
-      echo "<td>".$data['radiusPutar']."</td>";
-      echo "<td>".$data['hargaMin']."</td>";
-      echo "<td>".$data['hargaMax']."</td>";
-      echo "<td>".$data['kapasitasMesin']."</td>";
-      echo "<td>".$data['kapasitasTangki']."</td>";
-      echo "<td>".$data['ukuranVelg']."</td>";
-      echo "<td>".$data['ukuranRoda']."</td>";
-      echo "<td>" ."<img src='../images/" .$data['idMobil'] .".jpg' height='20' width='20'>" ."</td>";
-      echo "<td><a href='editMobil.php?id=".$data['idMobil']."'>Edit</a>";
-      echo "<td><a href='deleteMobil.php?id=".$data['idMobil']."'>Delete</a>";
-    }
-
-  }
-
-  function viewMobil()
-  {
-    include 'merk.php';
-    global $mysqli;
-
-    $result = mysqli_query($mysqli,"SELECT * FROM tblMobil");
-
-    while($data = mysqli_fetch_array($result)){
-      echo "<tr>";
-      echo "<td>".$data['idMobil']."</td>";
-      echo findMerk($data['idMerk']);
-      echo "<td>".$data['tipe']."</td>";
-      echo "<td>".$data['panjang']."</td>";
-      echo "<td>".$data['lebar']."</td>";
-      echo "<td>".$data['tinggi']."</td>";
-      echo "<td>".$data['jarakSumbuRoda']."</td>";
-      echo "<td>".$data['radiusPutar']."</td>";
-      echo "<td>".$data['hargaMin']."</td>";
-      echo "<td>".$data['hargaMax']."</td>";
-      echo "<td>".$data['kapasitasMesin']."</td>";
-      echo "<td>".$data['kapasitasTangki']."</td>";
-      echo "<td>".$data['ukuranVelg']."</td>";
-      echo "<td>".$data['ukuranRoda']."</td>";
-      echo "<td>" ."<img src='../images/" .$data['idMobil'] .".jpg' height='20' width='20'>" ."</td>";
+      echo "<td>".$data['panjang']." mm</td>";
+      echo "<td>".$data['lebar']." mm</td>";
+      echo "<td>".$data['tinggi']." mm</td>";
+      echo "<td>".$data['jarakSumbuRoda']." mm</td>";
+      echo "<td>".$data['radiusPutar']." mm</td>";
+      echo "<td>".$data['hargaMin']." IDR</td>";
+      echo "<td>".$data['hargaMax']." IDR</td>";
+      echo "<td>".$data['kapasitasMesin']." CC</td>";
+      echo "<td>".$data['kapasitasTangki']." L</td>";
+      echo "<td>".$data['ukuranVelg']." INCH</td>";
+      echo "<td>".$data['ukuranRoda']." INCH</td>";
+      echo "<td>" ."<img src='../images/" .$data['idMobil'] .".jpg' height='50' width='50'>" ."</td>";
       echo "<td><a href='editMobil.php?id=".$data['idMobil']."'>Edit</a>";
       echo "<td><a href='deleteMobil.php?id=".$data['idMobil']."'>Delete</a>";
     }
   }
+
   function handlingFile($xID,$act)
   {
     if($act === "add")
@@ -118,4 +105,5 @@
     }
 
   }
+
  ?>

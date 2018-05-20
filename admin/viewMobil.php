@@ -7,6 +7,13 @@
   <body>
     <h1>DAFTAR MOBIL</h1>
     <hr>
+    <h4>Cari Mobil</h4>
+
+    <form action="viewMobil.php" method="GET" style="height:40px;">
+      <input type="text" name="txtCari" value="" size="50">
+      <input type="submit" name="btnCariMobil" value="Cari">
+    </form>
+
     <table border="1">
       <tr>
         <th>ID MOBIL</th>
@@ -26,10 +33,16 @@
         <th>FOTO</th>
       </tr>
       <?php
-      include '../engine/mobil.php';
-      viewMobil();
+      include '../engine/proses.php';
+      $val = "";
+      if(isset($_GET['txtCari']))
+      {
+        $val = $_GET['txtCari'];
+      }
+      viewMobil($val);
        ?>
     </table>
-    <a href="inputMobil.php">TAMBAH MOBIL</a>
+    <a href="inputMobil.php">TAMBAH MOBIL</a><br>
+    <a href="menuAdmin.php">Back to Menu</a>
   </body>
 </html>

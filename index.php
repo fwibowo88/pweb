@@ -5,7 +5,7 @@
     <title>WELCOME TO OTO WEB</title>
   </head>
   <body>
-    <h1>CAR LIST</h1>
+    <marquee><h1>Welcome to OTOWEB</h1></marquee>
     <hr>
 <form action="compare.php" method="POST">
   <table border="1">

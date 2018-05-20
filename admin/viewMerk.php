@@ -17,6 +17,7 @@
       viewMerk();
        ?>
     </table>
-    <a href="inputMerk.php">Tambah Merk</a>
+    <a href="inputMerk.php">Tambah Merk</a><br>
+    <a href="menuAdmin.php">Back to Menu</a>
   </body>
 </html>

@@ -11,14 +11,13 @@
       <tr>
         <th>USERNAME</th>
         <th>NAMA ADMIN</th>
-        <th>PWD</th>
-        <th>SALT</th>
       </tr>
       <?php
       include '../engine/proses.php';
       viewUser();
       ?>
     </table>
-<a href="inputAdmin.php">TAMBAH ADMIN</a>
+    <a href="inputAdmin.php">TAMBAH ADMIN</a><br>
+    <a href="menuAdmin.php">Back to Menu</a>
   </body>
 </html>

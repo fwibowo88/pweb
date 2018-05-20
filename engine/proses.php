@@ -1,13 +1,13 @@
 <?php
 include 'mobil.php';
-include 'merk.php';
 include 'user.php';
+include 'merk.php';
 
 if(isset($_POST['subInMerk']))
 {
-
   addMerk($_POST['brand']);
-  echo "DATA SUKSES DITAMBAHKAN";
+  echo "DATA SUKSES DITAMBAHKAN <br>";
+  echo '<a href="../admin/viewMerk.php">Back To Merk</a>';
 }
 else if(isset($_POST['subInAdm']))
 {
@@ -57,6 +57,8 @@ else if(isset($_POST['subEdMerk']))
 
   editMerk($tmpID,$tmpBrand);
 
+  echo "DATA SUKSES DIUBAH <br>";
+  echo '<a href="../admin/viewMerk.php">Back To Merk</a>';
 }
 /*
 else if(isset($_POST['subEdAdm']))
@@ -88,16 +90,23 @@ else if(isset($_POST['subEdMob']))
   editMobil($tmpID,$tmpIDMerk,$tmpTipe,$tmpPanjang,$tmpLebar,$tmpTinggi,$tmpJarak,
   $tmpRadius,$tmpHMin,$tmpHMax,$tmpKapMesin,$tmpKapTangki,$tmpVelg,$tmpRoda);
 }
-
+else if(isset($_GET['btnCariMobil']))
+{
+  
+  $tmpVal = $_GET['txtCari'];
+  viewMobil("cari",$tmpVal);
+}
 else if(isset($_GET['subDeMerk']))
 {
   $tmpID = $_GET['idMerk'];
   deleteMerk($tmpID);
+  echo "DATA TELAH TERHAPUS";
 }
 else if(isset($_GET['subDeAdm']))
 {
   $tmpID = $_GET['idMerk'];
   deleteUser($tmpID);
+  echo "DATA TELAH TERHAPUS";
 }
 else if(isset($_GET['subDeMob']))
 {
