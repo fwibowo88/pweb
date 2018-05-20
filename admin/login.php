@@ -13,7 +13,7 @@ include '../engine/auth.php';
     <hr>
     <form action="../engine/auth.php" method="POST">
       <input type="text" name="uname" value="" placeholder="USERNAME">
-      <input type="text" name="pwd" value="" placeholder="PASSWORD">
+      <input type="password" name="pwd" value="" placeholder="PASSWORD">
       <input type="submit" name="btnLogin" value="LOGIN">
     </form>
   </body>

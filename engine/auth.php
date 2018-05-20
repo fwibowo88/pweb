@@ -18,9 +18,8 @@ function authCheck($uname, $pwd)
     header("location:../admin/menuAdmin.php");
   }
   else {
-    //header("location:index.php?msg=fail");
     echo "Username atau Password Salah.<br>";
-    echo "<a href='login.php'>Back To Login</a>";
+    echo "<a href='../admin/login.php'>Back To Login</a>";
 
   }
 }

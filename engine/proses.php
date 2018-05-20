@@ -1,6 +1,5 @@
 <?php
 include 'mobil.php';
-include 'user.php';
 include 'merk.php';
 
 if(isset($_POST['subInMerk']))
@@ -11,6 +10,7 @@ if(isset($_POST['subInMerk']))
 }
 else if(isset($_POST['subInAdm']))
 {
+  include 'user.php';
   //GET VALUE
   $tmpUname = $_POST['uname'];
   $tmpName = $_POST['name'];
@@ -30,25 +30,25 @@ else if(isset($_POST['subInAdm']))
   addUser($tmpUname,$tmpName,$encrPwd,$tmpSalt);
 }
 
-else if(isset($_POST['subInMob']))
+else if(isset($_GET['inputMobil']))
 {
-  echo $tmpIDMerk = $_POST['brand'];
-  echo $tmpTipe = $_POST['type'];
-  echo $tmpPanjang = $_POST['length'];
-  echo $tmpLebar = $_POST['weight'];
-  echo $tmpTinggi = $_POST['height'];
-  echo $tmpJarak = $_POST['jarakRoda'];
-  echo $tmpRadius = $_POST['radius'];
-  echo $tmpHMin = $_POST['pMin'];
-  echo $tmpHMax = $_POST['pMax'];
-  echo $tmpKapMesin = $_POST['machineCap'];
-  echo $tmpKapTangki = $_POST['tankCap'];
-  echo $tmpVelg = $_POST['rimSize'];
-  echo $tmpRoda = $_POST['wheelSize'];
+  $tmpIDMerk = $_POST['brand'];
+  $tmpTipe = $_POST['type'];
+  $tmpPanjang = $_POST['length'];
+  $tmpLebar = $_POST['weight'];
+  $tmpTinggi = $_POST['height'];
+  $tmpJarak = $_POST['jarakRoda'];
+  $tmpRadius = $_POST['radius'];
+  $tmpHMin = $_POST['pMin'];
+  $tmpHMax = $_POST['pMax'];
+  $tmpKapMesin = $_POST['machineCap'];
+  $tmpKapTangki = $_POST['tankCap'];
+  $tmpVelg = $_POST['rimSize'];
+  $tmpRoda = $_POST['wheelSize'];
 
   addMobil($tmpIDMerk,$tmpTipe,$tmpPanjang,$tmpLebar,$tmpTinggi,$tmpJarak,
   $tmpRadius,$tmpHMin,$tmpHMax,$tmpKapMesin,$tmpKapTangki,$tmpVelg,$tmpRoda);
-
+  echo "SUKSES";
 }
 else if(isset($_POST['subEdMerk']))
 {
@@ -58,19 +58,33 @@ else if(isset($_POST['subEdMerk']))
   editMerk($tmpID,$tmpBrand);
 
   echo "DATA SUKSES DIUBAH <br>";
-  echo '<a href="../admin/viewMerk.php">Back To Merk</a>';
+  echo '<a href="../admin/viewMobil.php">Back To Mobil</a>';
 }
-/*
+
 else if(isset($_POST['subEdAdm']))
 {
-  $tmpID = $_POST['uname'];
-  $tmpName = $_POST['pwd'];
-  $tmpPwd = $_POST['rePwd'];
-  $tmpSalt = xx;
+  include 'user.php';
+  $tmpUname = $_POST['id'];
+  $tmpName = $_POST['name'];
+  echo $tmpPwd = $_POST['pwd'] ;
+  $tmpRPwd = $_POST['rePwd'] ;
 
-  editUser($xID,$xNama,$xPwd,$xSalt);
-}*/
-else if(isset($_POST['subEdMob']))
+  if($tmpPwd != $tmpRPwd)
+  {
+    echo "<a href='../admin/editAdmin.php?id=".$_POST['id']."'>BACK TO EDIT ADMIN</a>";
+  }
+  //ENCRYPTING PWD
+  echo $enc = encryptUser($tmpPwd);
+  $split = explode("-",$enc);
+  $encrPwd = $split[0];
+  $tmpSalt = $split[1];
+  editUser($tmpUname,$tmpName,$encrPwd,$tmpSalt);
+
+  echo "DATA SUKSES DIUBAH <br>";
+  echo '<a href="../admin/viewAdmin.php">Back To Admin</a>';
+}
+
+else if(isset($_GET['editMobil']))
 {
   $tmpID = $_POST['id'];
   $tmpIDMerk = $_POST['brand'];
@@ -89,10 +103,12 @@ else if(isset($_POST['subEdMob']))
 
   editMobil($tmpID,$tmpIDMerk,$tmpTipe,$tmpPanjang,$tmpLebar,$tmpTinggi,$tmpJarak,
   $tmpRadius,$tmpHMin,$tmpHMax,$tmpKapMesin,$tmpKapTangki,$tmpVelg,$tmpRoda);
+
+
 }
 else if(isset($_GET['btnCariMobil']))
 {
-  
+
   $tmpVal = $_GET['txtCari'];
   viewMobil("cari",$tmpVal);
 }
@@ -104,6 +120,8 @@ else if(isset($_GET['subDeMerk']))
 }
 else if(isset($_GET['subDeAdm']))
 {
+  include 'user.php';
+
   $tmpID = $_GET['idMerk'];
   deleteUser($tmpID);
   echo "DATA TELAH TERHAPUS";

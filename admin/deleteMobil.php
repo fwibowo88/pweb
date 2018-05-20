@@ -1,3 +1,7 @@
+<?php
+include '../engine/auth.php';
+sesCheck();
+ ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -8,7 +12,7 @@
     <h1>HAPUS MOBIL</h1>
     <hr>
     <form action="../engine/proses.php" method="GET">
-      <input type="text" name="idMobil" value="<?php echo $_GET['id']; ?>"><br>
+      ID Mobil : <input type="text" name="idMobil" value="<?php echo $_GET['id']; ?>" >
       <input type="submit" name="subDeMob" value="DELETE">
     </form>
   </body>

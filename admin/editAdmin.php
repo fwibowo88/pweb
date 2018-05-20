@@ -1,3 +1,6 @@
+<?php include '../engine/auth.php';
+sesCheck();
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -9,7 +12,7 @@
     <hr>
     <form class="" action="../engine/proses.php" method="POST">
       <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
-        USERNAME : <input type="text" name="uname" value="<?php echo $_GET['id'] ?>" disabled><br>
+        USERNAME : <input type="text" name="uname" value="<?php echo $_GET['id'] ?>"disabled><br>
         PASSWORD : <input type="text" name="pwd" value=""><br>
         RETYPE PASSWORD : <input type="text" name="rePwd" value=""><br>
         FULL NAME : <input type="text" name="name" value=""><br>

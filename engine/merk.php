@@ -42,15 +42,19 @@ include 'ConnDB.php';
     }
   }
 
-  function makeOption()
+  function makeOption($tmpID)
   {
       global $mysqli;
 
       $result = mysqli_query($mysqli,"SELECT * FROM tblMerk");
-
+      $select = "";
       while($data = mysqli_fetch_array($result))
       {
-        echo "<option value='".$data['idMerk']."'>" .$data['namaMerk'] ."</option>";
+        if($data['idMerk']==$tmpID)
+        {
+          $select = "selected";
+        }
+        echo "<option value='".$data['idMerk']."'".$select.">" .$data['namaMerk'] ."</option>";
       }
   }
  ?>

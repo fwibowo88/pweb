@@ -13,7 +13,7 @@ function editUser($xID,$xNama,$xPwd,$xSalt)
   global $mysqli;
 
   $result = mysqli_query($mysqli,"UPDATE tbladmin
-    SET namaAdmin='$xNama', passwordAdmin='$xPWD',saltAdmin='$xSalt' WHERE userID='$xID'");
+    SET namaAdmin='$xNama', passwordAdmin='$xPwd',saltAdmin='$xSalt' WHERE userID='$xID'");
 }
 function deleteUser($xID)
 {

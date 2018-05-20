@@ -1,17 +1,21 @@
+<?php include '../engine/auth.php';
+sesCheck();
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Input Mobil</title>
   </head>
   <body>
-    <h1>INPUT NEW CAR</h1>
+    <h1>INPUT DATA MOBIL</h1>
     <hr>
-<form action="../engine/proses.php" method="POST" enctype="multipart/form-data">
+<form id="frmData" method="POST" enctype="multipart/form-data">
   Brand : <select name="brand">
     <?php
     include '../engine/merk.php';
-    makeOption();
+    makeOption("");
     ?>
   </select> <br>
   Tipe : <input type="text" name="type" value=""enc> <br>
@@ -26,8 +30,27 @@
   Kapasitas Tangki :<input type="number" name="tankCap" value=""> cc<br>
   Ukuran Velg : <input type="number" name="rimSize" value=""> inch<br>
   Ukuran Roda : <input type="text" name="wheelSize" value=""> inch<br>
-  Upload Gambar : <input type="file" name="carImg" value=""> max 2MB<br>
-<input type="submit" name="subInMob" value="SIMPAN">
+  Upload Gambar : <input type="file" name="carImg" value="" required> max 2MB<br>
+<button id="btnSimpan" type="button" name="button">SIMPAN</button>
 </form>
+<script type="text/javascript">
+$("#btnSimpan").click(function(){
+  alert("OK");
+  var formData = new FormData($("#frmData")[0]);
+  $.ajax({
+    url: '../engine/proses.php?inputMobil=ok',
+    type: 'POST',
+    data: formData,
+    async: false,
+    cache: false,
+    contentType: false,
+    enctype: 'multipart/form-data',
+    processData:false,
+    success: function(response){
+      alert(response);
+    }
+  });
+});
+</script>
   </body>
 </html>

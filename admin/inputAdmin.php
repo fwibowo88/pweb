@@ -1,3 +1,6 @@
+<?php include '../engine/auth.php';
+sesCheck();
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>

@@ -20,6 +20,7 @@
       jarakSumbuRoda='$xSRoda',radiusPutar='$xRad',hargaMin='$xMin',hargaMax='$xMax',
       kapasitasMesin='$xMesin',KapasitasTangki='$xTangki',ukuranVelg='$xVelg',ukuranRoda='$xRoda'
       WHERE idMobil=$xMID");
+      handlingFile($xMID,"add");
   }
 
   function deleteMobil($xID)
@@ -40,7 +41,6 @@
 
       $result = mysqli_query($mysqli,"SELECT * FROM tblmobil c, tblmerk m WHERE c.idMerk = m.idMerk AND m.namaMerk LIKE '%".$xMerk."%'LIMIT $awal,$limit");
       $total = mysqli_query($mysqli,"SELECT COUNT(*)AS hasil FROM tblmobil c, tblmerk m WHERE c.idMerk = m.idMerk AND m.namaMerk LIKE '%".$xMerk."%'");
-
 
     $xData = mysqli_fetch_array($total);
     $jum = $xData['hasil'];
@@ -73,6 +73,33 @@
     }
   }
 
+  function findMobil($xID)
+  {
+    global $mysqli;
+
+    $result = mysqli_query($mysqli,"SELECT * FROM tblmobil WHERE idMobil=$xID");
+
+    //QUERY RESULT
+    $tmpData = array();
+    while($data = mysqli_fetch_array($result)){
+      $tmpData['idMobil'] = $data['idMobil'];
+      $tmpData['idMerk'] = $data['idMerk'];
+      $tmpData['tipe'] = $data['tipe'];
+      $tmpData['panjang'] = $data['panjang'];
+      $tmpData['lebar'] = $data['lebar'];
+      $tmpData['tinggi'] = $data['tinggi'];
+      $tmpData['jarakSumbuRoda'] = $data['jarakSumbuRoda'];
+      $tmpData['radiusPutar'] = $data['radiusPutar'];
+      $tmpData['hargaMin'] = $data['hargaMin'];
+      $tmpData['hargaMax'] = $data['hargaMax'];
+      $tmpData['kapasitasMesin'] = $data['kapasitasMesin'];
+      $tmpData['kapasitasTangki'] = $data['kapasitasTangki'];
+      $tmpData['ukuranVelg'] = $data['ukuranVelg'];
+      $tmpData['ukuranRoda'] = $data['ukuranRoda'];
+    }
+    return $tmpData;
+  }
+
   function handlingFile($xID,$act)
   {
     if($act === "add")
@@ -84,26 +111,30 @@
           $message="";
           $file_info = getimagesize($_FILES['carImg']['tmp_name']);
           if(empty($file_info)){
-            $message .= "uploaded file doesn't seem to be an image.";
+            $message .= "Tipe File tidak Valid";
           }
           else{
-            $message = 'Congratulations ! Your file was accepted.';
+            if($_FILES['carImg']['type'] == 'jpeg' || $_FILES['carImg']['type'] == 'png')
+            {
+              //die("Invalid Format");
+              echo "Invalid Format";
+            }
+            else {
+                $message = 'File Sukses di Upload';
+                move_uploaded_file($_FILES['carImg']['tmp_name'], "../images/".$xID.".jpg");
+            }
           }
-
-          move_uploaded_file($_FILES['carImg']['tmp_name'], "../images/".$xID.".jpg");
-
         }else{
           $message = "Error : ".$_FILES['carImg']['error'];
         }
       }
       else{
-        die('You did not select any file!');
+        die('Gambar tidak Dipilih');
       }
     }
     else {
       unlink("../images/".$xID.".jpg");
     }
-
   }
 
  ?>

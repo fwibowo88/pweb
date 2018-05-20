@@ -1,3 +1,6 @@
+<?php include '../engine/auth.php';
+sesCheck();
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -13,7 +16,7 @@
         <th>NAMA ADMIN</th>
       </tr>
       <?php
-      include '../engine/proses.php';
+      include '../engine/user.php';
       viewUser();
       ?>
     </table>
