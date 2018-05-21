@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.8.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2018 at 04:41 AM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.2
+-- Generation Time: May 17, 2018 at 07:17 PM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 5.6.35
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -40,11 +40,14 @@ CREATE TABLE `tbladmin` (
 --
 
 INSERT INTO `tbladmin` (`userID`, `namaAdmin`, `passwordAdmin`, `saltAdmin`) VALUES
-('u001', 'Igor', '1234567890', 'a'),
-('u002', 'Ivan', '0987654321', 'b'),
-('u003', 'Viktor', '123456', 'c'),
-('u004', 'Nikolae', '654321', 'd'),
-('u005', 'Anastasiya', '160987', 'e');
+('AAA', '1234', 'xx', ''),
+('abc', 'AAA', '', ''),
+('abca', 'AAA', '82258f90af2f75aff141bcbef9f345f2', '3'),
+('admin', 'admin', 'admin', '1'),
+('ALANA', 'ALAN ALAN', 'edabf5cde6f88d35e32b7e37aeed4ed9', '2'),
+('lol', 'COBA YA', 'lol', 'xx'),
+('s', '1', 'eaf418aefb7a9c97a6abeff9e7d827a0', '1'),
+('user1', 'FERNANDO WIBOWO', '1234', 'xx');
 
 -- --------------------------------------------------------
 
@@ -62,15 +65,15 @@ CREATE TABLE `tblmerk` (
 --
 
 INSERT INTO `tblmerk` (`idMerk`, `namaMerk`) VALUES
-(11, 'Toyota'),
-(12, 'Mitsubishi'),
-(13, 'Daihatsu'),
-(14, 'Ford'),
-(15, 'Nissan'),
-(16, 'Suzuki'),
-(17, 'Honda'),
-(18, 'BMW'),
-(19, 'Hyundai');
+(1, 'CC'),
+(2, 'HONDA'),
+(3, 'DATSUN'),
+(4, 'MITSUBISHI'),
+(5, ''),
+(6, 'MERCY'),
+(7, 'WULING'),
+(8, 'COBA DEH'),
+(9, 'aAAA');
 
 -- --------------------------------------------------------
 
@@ -100,16 +103,23 @@ CREATE TABLE `tblmobil` (
 --
 
 INSERT INTO `tblmobil` (`idMobil`, `idMerk`, `tipe`, `panjang`, `lebar`, `tinggi`, `jarakSumbuRoda`, `radiusPutar`, `hargaMin`, `hargaMax`, `kapasitasMesin`, `kapasitasTangki`, `ukuranVelg`, `ukuranRoda`) VALUES
-(20, 11, 'Fortuner', 4795, 1855, 1835, 2745, 3500, 467.3, 659.4, 2393, 80, 17, '265/65 R17'),
-(21, 12, 'Xpander', 4475, 1750, 1695, 2775, 3000, 197.1, 253.4, 1499, 45, 15, '185/65 R15'),
-(22, 17, 'Mobilio', 4386, 1683, 1603, 2650, 3000, 193, 247, 1496, 42, 15, '185/65 R15'),
-(23, 13, 'Sigra', 4070, 1655, 1600, 2525, 3000, 109.9, 150.65, 998, 36, 13, '155/80 R13'),
-(24, 16, 'Ignis', 3700, 1660, 1595, 2435, 3000, 144.5, 175.5, 1197, 32, 15, '175/65 R15'),
-(25, 15, 'Juke', 4135, 1765, 1565, 2350, 3000, 301.7, 330.9, 1498, 52, 17, '215/55 R17'),
-(26, 18, 'M5', 4910, 2119, 1467, 2964, 2500, 4006, 4006, 4395, 80, 19, '265/40 ZR19'),
-(27, 19, 'Tucson', 4475, 1850, 1650, 2670, 3000, 385, 458, 1999, 62, 17, '225/60 R17'),
-(28, 12, 'Pajero Sport', 4785, 1815, 1805, 2800, 3000, 454, 662, 2477, 68, 16, '265/70 R16'),
-(29, 17, 'Accord', 4870, 1850, 1465, 2775, 3000, 646, 646, 2356, 65, 18, '235/45 R18');
+(1, 4, 'EXPANDER AT', 4475, 1750, 1700, 2755, 5, 189, 246, 1500, 45, 15, '185/65 R15 '),
+(2, 1, 'INNOVA G M/T DIESEL', 4735, 1830, 1795, 2750, NULL, NULL, NULL, 2393, 50, 16, '205/65 R16 '),
+(3, 1, 'INNNN', 1, 2, 3, 4, 5, 7, 6, 8, 9, 0, '11'),
+(4, 1, 'adsad', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, ''),
+(5, 1, 'WULING CONFERO S', 111, 111, 111, 111, 111, 500, 1000, 900, 900, 1, '1'),
+(6, 1, 'sd', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '1'),
+(7, 1, 'a', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '1'),
+(8, 1, 'a', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '1'),
+(9, 1, 'a', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '1'),
+(10, 1, 'a', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '1'),
+(11, 1, 'a', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '1'),
+(12, 1, 'a', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '1'),
+(13, 1, 'sd', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '1'),
+(14, 1, 'sd', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '1'),
+(15, 1, 'sd', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '1'),
+(16, 1, 'a1', 11, 2, 2, 2, 2, 2, 2, 2, 2, 2, '2'),
+(17, 2, 'COBA DEH YA XX', 1, 11, 1, 1, 1, 1, 1, 1, 1, 1, '1');
 
 --
 -- Indexes for dumped tables
@@ -142,13 +152,13 @@ ALTER TABLE `tblmobil`
 -- AUTO_INCREMENT for table `tblmerk`
 --
 ALTER TABLE `tblmerk`
-  MODIFY `idMerk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `idMerk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tblmobil`
 --
 ALTER TABLE `tblmobil`
-  MODIFY `idMobil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `idMobil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables
